@@ -1,32 +1,19 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Navbar from 'react-bootstrap/Navbar'
+// import BgImage from './assets/utah.jpg';
 import './App.css';
-import pic from "./assets/weather.svg";
+
+import Weather from './components/Weather';
+import WeatherHeader from './components/WeatherHeader';
 
 function App() {
   return (
     <div className="bg">
-      <div className="App-header">
-      <Navbar sticky="top">
-        <Navbar.Brand href="#home">
-          <img
-          alt=""
-          src={pic}
-          width="30"
-          height="30"
-          className="d-inline-block align-top"
-          />{' '}
-          Weather App
-        </Navbar.Brand>
-        <Navbar.Toggle />
-        <Navbar.Collapse className="justify-content-end">
-          <Navbar.Text variant="light">
-              <a href="#login">Login</a>
-          </Navbar.Text>
-        </Navbar.Collapse>
-      </Navbar>
-        </div>
+      <div className="app-body">
+        <WeatherHeader />
+        <br></br>
+        <Weather />
+      </div>
     </div>
   );
 }

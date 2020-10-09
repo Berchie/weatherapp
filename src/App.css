@@ -1,5 +1,5 @@
 .App {
-  text-align: center;  
+  text-align: center;
 }
 
 .App-logo {
@@ -13,17 +13,18 @@
   }
 }
 
-.App-header {
+.app-body {
   /* background-color: #ffffff;
   opacity: 0.2; */
   min-height: 100vh;
-  position: absolute;
+  /* position: absolute; */
   bottom: 0;
   background: rgb(0, 0, 0); /* Fallback color */
   background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
   color: #f1f1f1;
   width: 100%;
   padding: 20px;
+  margin-top: -20px;
   /* background-color: transparent; */
   /* display: flex;
   flex-direction: column;
@@ -50,9 +51,10 @@
   }
 }
  .bg{
-   background-image: url("./assets/pier.jpg");
-   height: 100vh;
+   background-image: url("./assets/utah.jpg");
+   min-height: 100vh;
    background-position: center;
    background-repeat: no-repeat;
    background-size: cover;
+   color: #ffffff;
  }
