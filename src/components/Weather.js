@@ -108,6 +108,10 @@ import '../components/custom.css'
 
 function Weather({setLoggined}) {
 
+    const searchWeather = () =>{
+        
+    }
+
     return(
         // <Container>
         //     <div>
@@ -155,7 +159,7 @@ function Weather({setLoggined}) {
                             aria-describedby="basic-addon2"
                         />
                         <InputGroup.Append>
-                            <Button variant="secondary">Search</Button>
+                            <Button variant="secondary" onClick={}>Search</Button>
                         </InputGroup.Append>
                     </InputGroup>
                 </div>
