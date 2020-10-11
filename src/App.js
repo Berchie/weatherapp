@@ -1,16 +1,20 @@
-import React from 'react';
+import React,{useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-// import BgImage from './assets/utah.jpg';
 import './App.css';
-
 import Weather from './components/Weather';
-import WeatherHeader from './components/WeatherHeader';
+import LoginHeader from './components/LoginHeader';
+import LogoutHeader from './components/LogoutHeader';
+
 
 function App() {
+
+  const [loggedIn, etLoggedIn] = useState(false);
+
   return (
     <div className="bg">
       <div className="app-body">
-        <WeatherHeader />
+        {!loggedIn && <LoginHeader setLoggedIn={etLoggedIn} />}
+        {loggedIn && <LogoutHeader setLoggedIn={etLoggedIn} />}
         <br></br>
         <Weather />
       </div>
