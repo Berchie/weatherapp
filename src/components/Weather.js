@@ -17,9 +17,9 @@ function Weather({setLoggined}) {
 
     const [searchValue, setSearchValue] = useState('');
     const [currentWeather, setCurrentWeather] = useState(null);
-    const [location,  setLocation] = useState(null);
+    const [currentLocation,  setCurrentLocation] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [city , setCity] = useState('');
+    const [city , setCity] = useState(0);
    
     
     const handleCity = (event) => {
@@ -30,7 +30,7 @@ function Weather({setLoggined}) {
     const searchWeather = (e) =>{
         e.preventDefault();
         // alert(searchValue);
-        setCity('value');
+        setCity(city + 1);
         // alert(city)
     }
 
@@ -42,9 +42,9 @@ function Weather({setLoggined}) {
         .then(respone => respone.json())
         .then(data => {
             setCurrentWeather(data.current);
-            setLocation(data.location);
+            setCurrentLocation(data.location);
             console.log(currentWeather);
-            console.log(location);            
+            console.log(currentLocation);            
             setLoading(false);
             // if(city === 'value'){
             //     setCity('');
@@ -74,7 +74,7 @@ function Weather({setLoggined}) {
                             onChange = {handleCity}
                         />
                         <InputGroup.Append>
-                            <Button variant="secondary" onClick={searchWeather}>Search</Button>
+                            <Button variant="secondary"  onClick={searchWeather}>Search</Button>
                         </InputGroup.Append>
                     </InputGroup>
                 </div>
@@ -89,7 +89,7 @@ function Weather({setLoggined}) {
                     <Card id="weather-card"  text="white" style={{ width: '13rem', height:'13rem'}}>
                         {/* <Card.Header>Header</Card.Header> */}
                         <Card.Body as="div">
-                            <Card.Title><h4>City, Country</h4></Card.Title>
+                            <Card.Title> <h4>, </h4> </Card.Title>
                             <Card.Text>
                                 <p>09/10/2020 06:00GMT</p>
                                 <img src={weatherImage} alt="" style={{width: 50, height:50}} />
