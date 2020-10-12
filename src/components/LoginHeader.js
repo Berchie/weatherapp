@@ -48,9 +48,9 @@ const LoginButton = (event) => {
 //         setLoggedIn(true);
 //     }
 
-    logginedIn.map(login => {if (login.username === email && login.password === password){
-        setLoggedIn(true)
-    }})
+    logginedIn.map(login =>  {if (login.username === email && login.password === password){
+         setLoggedIn(true)
+    }},)
 //    alert(JSON.stringify(logginedIn));
 //    const vn = logginedIn[0].username;
 //    alert(vn);
