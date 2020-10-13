@@ -18,3 +18,23 @@ export function storeData(userName, city, searchDate, seracTime) {
         }
     })    
 }
+
+//using fetch api to post to local json file
+// fetch(api_url,{
+//     method = 'POST',
+//     headers: {
+//         'Content-Type':'application/json'
+//     },
+//     body:JSON.stringify({
+//         date: "2020-10-12 22:20"
+//     })
+// })
+// .then(res => {
+//     return res.json()
+// })
+// .then(data => console.log(data))
+
+// .catch((err) => console.log(err))
+
+// fs.writeFile(historyData,data,'utfe',callback);
+

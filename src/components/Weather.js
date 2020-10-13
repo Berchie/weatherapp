@@ -14,17 +14,44 @@ import '../components/custom.css'
 function Weather({setLoggined}) {
 
     const [cityName, setCityName] = useState('Kumasi');
-// const [btValue, setBtnValue] = useState(0);
-
+    const [btValue, setBtValue] = useState(0);
+    const api_url = `http://api.weatherapi.com/v1/current.json?key=c5bf03e83ad84e67a3610422201110&q==${cityName}`
     const getCityName = (e) => {
-        setCityName(e.target.value);  
-        console.log(cityName);  
+        setCityName(e.target.value); 
     }
 
     const submitCallback = (e) =>{
         e.preventDefault();
         console.log(`City name: ${cityName}`);
+        setBtValue(preBtValue => preBtValue + 1);
+        // setBtValue(true);
+        console.log(btValue);
     }
+    
+    useEffect(() => {
+
+        fetch(api_url)
+        .then(res=>{
+            if (res.ok) {     //to check respong is return 200-299(ok)
+                res.json()
+                .then(data =>{
+                    console.log('Country: '+ data.location["country"] +', City: ' + data.location["name"])
+                    console.log('Temp: '+ data.current["temp_c"] +'˚C, Condition: ' + data.current["condition"]["text"])
+                })                
+            } else {
+                console.log("Not Successful")
+            }
+        })
+        // .then(res => 
+        //     res.json())
+        // .then(data => {
+        //     console.log(data)
+        // })
+        .catch(
+            (err => {console.error(err)})
+        )
+
+    }, [btValue])
     
     return(
 
@@ -37,13 +64,14 @@ function Weather({setLoggined}) {
                             placeholder="City"
                             aria-label="City"
                             aria-describedby="basic-addon2"
-                            autocomplete="off" 
+                            autoComplete="off" 
                             value={cityName}
                             onChange={getCityName}
                         />
                         <InputGroup.Append>
                             <Button variant="secondary" onClick={submitCallback}>Search</Button>
                         </InputGroup.Append>
+                        <button onClick={submitCallback}>submit</button>
                     </InputGroup>
                 </div>
             </div>
