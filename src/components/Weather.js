@@ -1,14 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-// import Container from 'react-bootstrap/Container'
-// import Row from 'react-bootstrap/Row'
-// import Col from 'react-bootstrap/Col'
 import InputGroup from 'react-bootstrap/InputGroup'
 import { Button, FormControl } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card'
 import Spinner from 'react-bootstrap/Spinner'
-// import WeatherHistory from '../components/WeatherHistory';
-// import {storeHistory} from './storehistory.js';
 import '../components/custom.css'
 import WeatherHistory from './WeatherHistory';
 import { propTypes } from 'react-bootstrap/esm/Image';
@@ -130,7 +125,7 @@ function Weather({setCount}) {
                     </Card>}
                 </div>
             </div>
-            {/* {loggedIn && <WeatherHistory count = {count}/>} */}
+           
         </div>
     );
     

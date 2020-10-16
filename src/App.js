@@ -5,14 +5,14 @@ import Weather from './components/Weather';
 import LoginHeader from './components/LoginHeader';
 import LogoutHeader from './components/LogoutHeader';
 import WeatherHistory from './components/WeatherHistory';
-import { CurrentPosition } from './components/search';
+// import { CurrentPosition } from './components/search';
 
 
 function App() {
 
   const [loggedIn, setLoggedIn] = useState(false);
   const [count, setCount] = useState(1);
-  // const [user, setUser] = useState('');
+ 
 
   return (
     <div className="bg">
