@@ -5,21 +5,24 @@ import Weather from './components/Weather';
 import LoginHeader from './components/LoginHeader';
 import LogoutHeader from './components/LogoutHeader';
 import WeatherHistory from './components/WeatherHistory';
+import { CurrentPosition } from './components/search';
 
 
 function App() {
 
-  const [loggedIn, etLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [count, setCount] = useState(1);
+  // const [user, setUser] = useState('');
 
   return (
     <div className="bg">
       <div className="app-body">
-        {!loggedIn && <LoginHeader setLoggedIn={etLoggedIn} />}
-        {loggedIn && <LogoutHeader setLoggedIn={etLoggedIn} />}
+        {!loggedIn && <LoginHeader setLoggedIn={setLoggedIn} />}
+        {loggedIn && <LogoutHeader setLoggedIn={setLoggedIn} />}
         <br></br>
         {/* <CurrentPosition /> */}
-        <Weather />
-        {loggedIn && <WeatherHistory />}
+        <Weather setCount={setCount} />
+        {loggedIn && <WeatherHistory count={count} />}
       </div>
     </div>
   );

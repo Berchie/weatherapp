@@ -6,17 +6,24 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import InputGroup from 'react-bootstrap/InputGroup'
 import { Button, FormControl } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card'
-import WeatherHistory from '../components/WeatherHistory';
+import Spinner from 'react-bootstrap/Spinner'
+// import WeatherHistory from '../components/WeatherHistory';
+// import {storeHistory} from './storehistory.js';
 import '../components/custom.css'
+import WeatherHistory from './WeatherHistory';
+import { propTypes } from 'react-bootstrap/esm/Image';
 
 
-function Weather({setLoggined}) {
 
-    const [cityName, setCityName] = useState('Kumasi');
-    const [btValue, setBtValue] = useState(0);
+function Weather({setCount}) {
+
+    const [history, setHistory] = useState([]);
+    const [historyCheck, setHistoryCheck] = useState("nskdjsaw");
+    const [cityName, setCityName] = useState("Kumasi");
+    const [btValue, setBtValue] = useState("wn67d959q");
     const [cityWeather, setCityWeather] = useState(null);
     const api_url = `http://api.weatherapi.com/v1/current.json?key=c5bf03e83ad84e67a3610422201110&q==${cityName}`
-    let weatherData = null;
+    
     const getCityName = (e) => {
         setCityName(e.target.value); 
     }
@@ -24,8 +31,8 @@ function Weather({setLoggined}) {
     const submitCallback = (e) =>{
         e.preventDefault();
         console.log(`City name: ${cityName}`);
-        setBtValue(preBtValue => preBtValue + 1);
-        // setBtValue(true);
+        setBtValue(Math.random().toString(36).substr(2, 9));
+        setHistoryCheck(Math.random().toString(36).substr(2, 9))
         console.log(btValue);
     }
     
@@ -39,23 +46,44 @@ function Weather({setLoggined}) {
                     setCityWeather(data);
                     // console.log(cityWeather);
                     console.log('Country: '+ data.location["country"] +', City: ' + data.location["name"])
-                    // console.log('Temp: '+ data.current["temp_c"] +'˚C, Condition: ' + data.current["condition"]["text"])
-                    
                 })                
             } else {
                 console.log("Not Successful")
             }
         })
-        // .then(res => 
-        //     res.json())
-        // .then(data => {
-        //     console.log(data)
-        // })
         .catch(
             (err => {console.error(err)})
         )
 
     }, [btValue])
+
+    const historyData = () =>{
+        if (cityWeather !== null) {
+
+            const newHistory= {
+                id: Math.random().toString(36).substr(2, 9),
+                name: cityWeather.location["name"],
+                country: cityWeather.location["country"],
+                localtime:  cityWeather.location["localtime"],
+                icon: cityWeather.current["condition"]["icon"],
+                temp: cityWeather.current["temp_c"],
+                description: cityWeather.current["condition"]["text"],
+            }
+            setHistory([...history, newHistory]);
+        }
+    };
+
+   useEffect(() => {
+       historyData()
+       
+   }, [cityWeather])
+
+    useEffect(() =>{
+            const json = JSON.stringify(history);
+            localStorage.setItem("history", json);
+            setCount(preCount => preCount + 1);
+    }, [history]);
+
     
     return(
 
@@ -78,33 +106,31 @@ function Weather({setLoggined}) {
                     </InputGroup>
                 </div>
             </div>
+
             {/* weather card of a city */}
-            {/* {loading
-            ?
-            <p>loading...</p>
-            : */}
             <div className="row justify-content-md-center">
                 <div className="col-md-auto">
                     {cityWeather === null 
                      ?
-                     <p>Loaading</p>
+                     <Spinner animation="grow" variant="info" />
                      :
                      <Card id="weather-card"  text="white" style={{ width: '13rem', height:'13rem'}}>
                         {/* <Card.Header>Header</Card.Header> */}
                         
                         <Card.Body as="div">
 
-                            <Card.Title> <h4>{cityWeather.location["name"]}, {cityWeather.location["country"]}</h4> </Card.Title>
+                            <Card.Title> <h6>{cityWeather.location["name"]}, {cityWeather.location["country"]}</h6> </Card.Title>
                             <Card.Text>
                                 <p>{cityWeather.location["localtime"]}</p>
                                 <img src={cityWeather.current["condition"]["icon"]} alt="weather-condition-icon" />
-                                <strong style={{fontSize:30}}>{cityWeather.current["temp_c"]}<span style={{fontSize:30}}>&#8451;</span></strong>
+                                <strong style={{fontSize:25}}>{cityWeather.current["temp_c"]}<span style={{fontSize:25}}>&#8451;</span></strong>
                                  <p style={{fontWeight: "normal", fontSize:15}}>{cityWeather.current["condition"]["text"]}</p>
                             </Card.Text>
                         </Card.Body>
                     </Card>}
                 </div>
             </div>
+            {/* {loggedIn && <WeatherHistory count = {count}/>} */}
         </div>
     );
     

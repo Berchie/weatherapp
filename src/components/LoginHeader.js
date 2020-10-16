@@ -14,7 +14,6 @@ function LoginHeader({setLoggedIn}){
 const [email, setEmail] = useState('');
 const [password, setPassword] = useState('');
 
-
 //email input event handle
 const handleEmail = (event) => {
     setEmail(event.target.value);
@@ -49,7 +48,8 @@ const LoginButton = (event) => {
 //     }
 
     logginedIn.map(login =>  {if (login.username === email && login.password === password){
-         setLoggedIn(true)
+        localStorage.clear(); 
+        setLoggedIn(true);
     }},)
 //    alert(JSON.stringify(logginedIn));
 //    const vn = logginedIn[0].username;

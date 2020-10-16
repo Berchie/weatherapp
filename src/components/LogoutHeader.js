@@ -9,8 +9,13 @@ import { Container, Button } from 'react-bootstrap';
 
 function LogoutHeader({setLoggedIn}){
 
-const handleLogout=(event) =>{
+const refreshPage = () =>{
+    window.location.reload();
+}
+
+const handleLogout=() =>{
     setLoggedIn(false);
+    refreshPage();
 }
 
 return(
