@@ -5,8 +5,8 @@ import { Button, FormControl } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card'
 import Spinner from 'react-bootstrap/Spinner'
 import '../components/custom.css'
-import WeatherHistory from './WeatherHistory';
-import { propTypes } from 'react-bootstrap/esm/Image';
+
+
 
 
 

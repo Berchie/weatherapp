@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Card from 'react-bootstrap/Card'
-import weatherImage from '../assets/weather.svg';
 import '../components/custom.css';
 
 function WeatherHistory({count}){
