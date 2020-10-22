@@ -7,9 +7,6 @@ import Spinner from 'react-bootstrap/Spinner'
 import '../components/custom.css'
 
 
-
-
-
 function Weather({setCount}) {
 
     const [history, setHistory] = useState([]);

@@ -29,31 +29,12 @@ const handlePassword = (event) => {
 const LoginButton = (event) => {
     event.preventDefault();
 
-//    const logined = UserAccount.map((user)=>{
-//        var usern = user.username;
-//        var userp = user.password;
-//         if (user.username === email && user.password === password){
-//             // return alert(usern + ' '+ userp);
-//             return true;
-//         }
-
-//    })
-
-//    alert(logined)
-//    setLoggedIn(logined);
-
    const logginedIn = UserAccount.filter(user => user.username === email);
-//    if (logginedIn[0].username === email && logginedIn[0].password === password){
-//         setLoggedIn(true);
-//     }
 
     logginedIn.map(login =>  {if (login.username === email && login.password === password){
         localStorage.clear(); 
         setLoggedIn(true);
     }},)
-//    alert(JSON.stringify(logginedIn));
-//    const vn = logginedIn[0].username;
-//    alert(vn);
    
 }
 
@@ -70,10 +51,6 @@ const popover = (
                 <FormGroup controlId="formPassword">
                     <FormControl type="password" value={password} placeholder="Password" onChange={handlePassword} />
                 </FormGroup>
-                {/* <Button id="login-button" variant="primary" onClick={LoginButton} style={{width:100}}>Login</Button> */}
-                {/* <input className="form-input" type="text" value={email} placeholder="Username" onChange={handleEmail} />
-                <input className="form-input" type="password"  value={password} placeholder="Password" onChange={handlePassword} /> */}
-                {/* <br></br> */}
                 <Button id="login-button" variant="primary" onClick={LoginButton}>Login</Button>
             </Form>
             </div>
@@ -97,9 +74,6 @@ const popover = (
                 </Navbar.Brand>
                 <Navbar.Toggle />
                 <Navbar.Collapse className="justify-content-end">
-                {/* <Navbar.Text variant="light">
-                    <a href="#login">Login</a>
-                </Navbar.Text> */}
                 <OverlayTrigger trigger="click" placement="bottom" overlay={popover}>
                     <Button variant="secondary">Login</Button>
                 </OverlayTrigger>
